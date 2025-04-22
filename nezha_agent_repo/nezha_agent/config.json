@@ -1,0 +1,35 @@
+---
+name: Nezha Agent
+version: 1.0
+slug: nezha_agent
+description: "一个 Home Assistant 的 Nezha 节点监控 Agent"
+url: https://github.com/yourusername/nezha-agent-addon
+arch:
+  - amd64
+  - aarch64
+  - armv7
+init: false
+startup: services
+boot: auto
+host_network: true
+image: "tchivs/nezha-agent:latest"
+panel_icon: "mdi:monitor"       # ✅ 建议：添加图标，美观
+webui: "[PROTO:http]://[HOST]"  # ✅ 建议：如有 Web UI 可指定地址
+ingress: false                  # ✅ 建议：明确是否开启内嵌 Web 界面
+ingress_stream: false           # ✅ 建议：是否允许视频/实时流
+
+schema:
+  domain: "str"
+  port: "int"
+  secret: "str"
+  args: "str?"
+  platform: "str?"
+  version: "str?"
+
+options:
+  domain: "your.domain.com"
+  port: 5555
+  secret: "your_node_secret"
+  args: ""
+  platform: "HassOS"
+  version: "2025.04"
